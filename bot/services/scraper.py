@@ -5,9 +5,12 @@ from utils.logger import logger
 
 async def scrape_channels(keyword: str) -> list[dict]:
     url = f"https://tgstat.com/search?query={keyword.replace(' ', '+')}"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+    }
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, timeout=10) as response:
+            async with session.get(url, headers=headers, timeout=10) as response:
                 if response.status != 200:
                     logger.warning(f"Scrape failed: status {response.status}")
                     return []
