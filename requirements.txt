@@ -1,0 +1,7 @@
+pyrogram
+tgcrypto
+motor
+aiohttp
+beautifulsoup4
+python-dotenv
+pydantic
